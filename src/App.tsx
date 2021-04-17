@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom'
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Welcome from "./pages/Auth/Welcome";
+import Login from "./pages/Auth/Login";
+import Home from "./pages/Auth/Home";
 
 function App() {
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+      (
+          async () => {
+              const res = await fetch('http://localhost:8000/quinielas.io/user', {
+                  headers: { 'Content-Type': 'application/json' },
+                  credentials: 'include'
+              });
+
+              const content = await res.json();
+              setName(content.Username);
+          }
+      )();
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+          <Navbar name={name} setName={setName} />
+            <main>
+                <Route exact path='/' component={Welcome} />
+                <Route exact path='/login' component={ () => <Login setName={setName} /> } />
+                <Route exact path='/home' component={ () => <Home name={name} /> } />
+            </main>
+          <Footer />
+      </BrowserRouter>
     </div>
   );
 }
