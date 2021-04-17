@@ -18,11 +18,11 @@ const Navbar = (props: {name: string, setName: (name: string) => void}) => {
     if (props.name === undefined) {
         menu = (
             <div className="buttons">
-                <Link to='/' className="button is-primary">
-                    <strong>Registro</strong>
-                </Link>
-                <Link to='/login' className="button is-light">
+                <Link to='/login' className="button is-primary">
                     Iniciar Sesion
+                </Link>
+                <Link to='/register' className="button is-primary">
+                    <strong>Registro</strong>
                 </Link>
             </div>
         );

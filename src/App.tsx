@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Welcome from "./pages/Auth/Welcome";
 import Login from "./pages/Auth/Login";
 import Home from "./pages/Auth/Home";
+import Register from "./pages/Auth/Register";
 
 function App() {
   const [name, setName] = useState('');
@@ -30,6 +31,7 @@ function App() {
           <Navbar name={name} setName={setName} />
             <main>
                 <Route exact path='/' component={Welcome} />
+                <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={ () => <Login setName={setName} /> } />
                 <Route exact path='/home' component={ () => <Home name={name} /> } />
             </main>
