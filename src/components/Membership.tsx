@@ -91,7 +91,9 @@ const Membership = (props: {idMembresia: number, type: string, price: number, id
                                     <td>{props.type}</td>
                                     <td>Q.{props.price.toString()}</td>
                                     <td>
-                                        <button onClick={showForm} className='button is-info is-small'>Actualizar</button>
+                                        <button onClick={showForm} className='button is-info is-small'>
+                                            Actualizar
+                                        </button>
                                     </td>
                                 </tr>
                                 </tbody>

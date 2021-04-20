@@ -29,6 +29,9 @@ const Navbar = (props: {name: string, setName: (name: string) => void}) => {
     } else {
         menu = (
             <div className="buttons">
+                <Link to='/home' className="button is-primary">
+                    <strong>Inicio</strong>
+                </Link>
                 <Link to='/profile' className="button is-primary">
                     <strong>{props.name}</strong>
                 </Link>

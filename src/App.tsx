@@ -8,6 +8,7 @@ import Login from "./pages/Auth/Login";
 import Home from "./pages/Auth/Home";
 import Register from "./pages/Auth/Register";
 import Subscription from "./pages/User/Subscription";
+import Profile from "./pages/User/Profile";
 
 function App() {
   const [name, setName] = useState('');
@@ -40,6 +41,7 @@ function App() {
                 <Route exact path='/login' component={ () => <Login setName={setName} /> } />
                 <Route exact path='/home' component={ () => <Home name={name} role={role} /> } />
                 <Route exact path='/subs' component={ () => <Subscription name={name} role={role} idUser={idUser} /> } />
+                <Route exact path='/profile' component={Profile} />
             </main>
           <Footer />
       </BrowserRouter>
