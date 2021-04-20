@@ -29,7 +29,7 @@ const FormRegister = () => {
         });
         const content = await res.json()
         console.log(content)
-        // setRedirect(true);
+        setRedirect(true);
     }
 
     if (redirect) {

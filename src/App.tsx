@@ -7,9 +7,12 @@ import Welcome from "./pages/Auth/Welcome";
 import Login from "./pages/Auth/Login";
 import Home from "./pages/Auth/Home";
 import Register from "./pages/Auth/Register";
+import Subscription from "./pages/User/Subscription";
 
 function App() {
   const [name, setName] = useState('');
+  const [role, setRole] = useState(0);
+  const [idUser, setIdUser] = useState(0);
 
   useEffect(() => {
       (
@@ -21,6 +24,8 @@ function App() {
 
               const content = await res.json();
               setName(content.Username);
+              setRole(content.IdRol);
+              setIdUser(content.Id);
           }
       )();
   });
@@ -33,7 +38,8 @@ function App() {
                 <Route exact path='/' component={Welcome} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={ () => <Login setName={setName} /> } />
-                <Route exact path='/home' component={ () => <Home name={name} /> } />
+                <Route exact path='/home' component={ () => <Home name={name} role={role} /> } />
+                <Route exact path='/subs' component={ () => <Subscription name={name} role={role} idUser={idUser} /> } />
             </main>
           <Footer />
       </BrowserRouter>

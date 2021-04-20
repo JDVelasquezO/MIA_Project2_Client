@@ -29,6 +29,9 @@ const Navbar = (props: {name: string, setName: (name: string) => void}) => {
     } else {
         menu = (
             <div className="buttons">
+                <Link to='/profile' className="button is-primary">
+                    <strong>{props.name}</strong>
+                </Link>
                 <Link to='/login' className="button is-light" onClick={logoutHandle}>
                     <strong>Cerrar Sesión</strong>
                 </Link>

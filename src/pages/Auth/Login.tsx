@@ -21,7 +21,6 @@ const Login = (props: {setName: (name: string) => void}) => {
         const content = await res.json();
         setRedirect(true);
         props.setName(content.Username)
-        console.log(content);
     }
 
     if (redirect) {
