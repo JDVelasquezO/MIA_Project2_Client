@@ -48,13 +48,6 @@ const Navbar = (props: {name: string, setName: (name: string) => void}) => {
                 <Link className="navbar-item" to="/">
                     <h1>Quiniela<b>App</b></h1>
                 </Link>
-
-                <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false"
-                   data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
             </div>
 
             <div id="navbarBasicExample" className="navbar-menu">

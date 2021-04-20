@@ -9,8 +9,7 @@ const PhotoProfile = () => {
             <div className="card-image">
                 <figure className="image is-1by1">
                     <img className='is-rounded'
-                         src={Yessi}
-                         alt="Placeholder image"/>
+                         src={Yessi}/>
                 </figure>
             </div>
             <div className="card-content">

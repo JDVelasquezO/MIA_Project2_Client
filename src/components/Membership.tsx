@@ -20,7 +20,7 @@ const Membership = (props: {idMembresia: number, type: string, price: number, id
             })
         });
         const content = await res.json();
-        window.location.href = 'http://localhost:3001/subs';
+        window.location.href = '/subs';
         console.log(content);
     }
 

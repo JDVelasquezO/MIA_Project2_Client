@@ -14,6 +14,10 @@ function App() {
   const [name, setName] = useState('');
   const [role, setRole] = useState(0);
   const [idUser, setIdUser] = useState(0);
+  const [first, setFirst] = useState('');
+  const [last, setLast] = useState('');
+  const [birth, setBirth] = useState('');
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
       (
@@ -27,6 +31,10 @@ function App() {
               setName(content.Username);
               setRole(content.IdRol);
               setIdUser(content.Id);
+              setFirst(content.First);
+              setLast(content.Last);
+              setBirth(content.DateBirth);
+              setEmail(content.Email);
           }
       )();
   });
@@ -41,7 +49,9 @@ function App() {
                 <Route exact path='/login' component={ () => <Login setName={setName} /> } />
                 <Route exact path='/home' component={ () => <Home name={name} role={role} /> } />
                 <Route exact path='/subs' component={ () => <Subscription name={name} role={role} idUser={idUser} /> } />
-                <Route exact path='/profile' component={Profile} />
+                <Route exact path='/profile'
+                       component={ () => <Profile first={first} last={last} username={name}
+                                                  birth={birth} email={email} /> } />
             </main>
           <Footer />
       </BrowserRouter>
