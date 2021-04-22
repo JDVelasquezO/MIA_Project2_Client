@@ -4,12 +4,6 @@ import FormProfile from "../../components/FormProfile";
 import ChangePhoto from "../../components/ChangePhoto";
 
 const Profile = (props: { first: string, last: string, username: string, birth: string, email: string }) => {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [first, setFirst] = useState('');
-    const [last, setLast] = useState('');
-    const [birth, setBirth] = useState('');
-
     return (
         <div className='columns mt-2'>
             <div className={'column'}>

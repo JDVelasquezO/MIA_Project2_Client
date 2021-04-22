@@ -36,7 +36,9 @@ const Subscription = (props: {name: string, role: number, idUser: number}) => {
                     <li className="is-active">
                         <Link to='/subs'>Subscripción</Link>
                     </li>
-                    <li><a>Eventos</a></li>
+                    <li>
+                        <Link to='/events'>Eventos</Link>
+                    </li>
                     <li><a>Recompensas</a></li>
                 </ul>
             </div>

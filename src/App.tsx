@@ -9,6 +9,8 @@ import Home from "./pages/Auth/Home";
 import Register from "./pages/Auth/Register";
 import Subscription from "./pages/User/Subscription";
 import Profile from "./pages/User/Profile";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import Events from "./pages/User/Events";
 
 function App() {
   const [name, setName] = useState('');
@@ -46,6 +48,8 @@ function App() {
             <main>
                 <Route exact path='/' component={Welcome} />
                 <Route exact path='/register' component={Register} />
+                <Route exact path='/forgotPass' component={ForgotPassword} />
+                <Route exact path='/events' component={ () => <Events role={role} name={name} /> } />
                 <Route exact path='/login' component={ () => <Login setName={setName} /> } />
                 <Route exact path='/home' component={ () => <Home name={name} role={role} /> } />
                 <Route exact path='/subs' component={ () => <Subscription name={name} role={role} idUser={idUser} /> } />

@@ -1,5 +1,6 @@
 import React, {SyntheticEvent, useState} from 'react';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = (props: {setName: (name: string) => void}) => {
     const [email, setEmail] = useState('');
@@ -56,6 +57,7 @@ const Login = (props: {setName: (name: string) => void}) => {
 
                 <button className="button is-primary">Entrar</button>
             </form>
+            <Link to='/forgotPass' className="button is-danger">¿Olvidaste tu contraseña?</Link>
         </section>
     );
 };

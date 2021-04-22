@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import Banner from "../../components/Banner";
 
 const Home = (props: {name: string, role: number}) => {
     let page;
@@ -16,7 +17,9 @@ const Home = (props: {name: string, role: number}) => {
                     <li>
                         <Link to='/subs'>Subscripción</Link>
                     </li>
-                    <li><a>Eventos</a></li>
+                    <li>
+                        <Link to='/events'>Eventos</Link>
+                    </li>
                     <li><a>Recompensas</a></li>
                 </ul>
             </div>
@@ -26,7 +29,15 @@ const Home = (props: {name: string, role: number}) => {
     return (
         <div>
             { page }
-            <h1>Quinielas</h1>
+            <Banner color={"container hero is-info"}
+                    title={"Participa en las quinielas"}
+                    subtitle={"y gana increíbles premios"} />
+            <Banner color={"container hero is-danger"}
+                    title={"Aqui va otro título"}
+                    subtitle={"y otro subtítulo"} />
+            <Banner color={"container hero is-primary"}
+                    title={"Aquí va un titulo mas"}
+                    subtitle={"y otro subtitulo"} />
         </div>
     );
 };

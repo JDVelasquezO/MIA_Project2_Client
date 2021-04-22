@@ -1,5 +1,4 @@
 import React from 'react';
-import Yessi from "../res/yessi.jpg";
 
 const date = new Date();
 
@@ -9,7 +8,7 @@ const PhotoProfile = () => {
             <div className="card-image">
                 <figure className="image is-1by1">
                     <img className='is-rounded'
-                         src={Yessi}/>
+                         src={'/images/yessi.jpg'}  alt={'profile-photo'}/>
                 </figure>
             </div>
             <div className="card-content">
