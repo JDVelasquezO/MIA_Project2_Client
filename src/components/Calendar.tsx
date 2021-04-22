@@ -8,10 +8,12 @@ import {
 import '@zach.codes/react-calendar/dist/calendar-tailwind.css';
 import {startOfMonth, subHours} from 'date-fns';
 
-export const MyMonthlyCalendar = () => {
+export const MyMonthlyCalendar = (props: { dates: any }) => {
     let [currentMonth, setCurrentMonth] = useState<Date>(
         startOfMonth(new Date())
     );
+
+    // console.log(props.dates);
 
     return (
         <MonthlyCalendar
@@ -20,15 +22,12 @@ export const MyMonthlyCalendar = () => {
         >
             <MonthlyNav />
             <MonthlyBody
-                events={[
-                    { title: 'Call John', date: subHours(new Date(), 2) },
-                    { title: 'Call John', date: subHours(new Date(), 1) },
-                    { title: 'Meeting with Bob', date: new Date() },
-                ]}
+                events={ props.dates }
                 renderDay={data =>
                     data.map((item, index) => (
                         <DefaultMonthlyEventItem
                             key={index}
+                            // @ts-ignore
                             title={item.title}
                             date={item.date.toDateString()}
                         />
