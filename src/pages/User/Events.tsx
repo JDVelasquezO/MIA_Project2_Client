@@ -11,7 +11,6 @@ const Events = (props: {name: string, role: number}) => {
         </div>
     )
     const [calendar, setCalendar] = useState(notification);
-    const [ affair, setAffair ] = useState("");
     let page;
     const dateArray: Array<Date> = [];
 
@@ -25,13 +24,21 @@ const Events = (props: {name: string, role: number}) => {
 
                 const content = await res.json();
                 content.map(function (e: any) {
-                    let objectDate: any = { title: '', date: '' };
+                    let objectDate: any = { title: '', date: '', color: '' };
                     let dateOfGame = new Date(e.DateOfGame);
-                    objectDate.title = e.IdEvent
+                    let color = ''
+                    if (e.Color == "Morado") {
+                        color = 'has-background-info-dark';
+                    } else {
+                        color = 'has-background-grey'
+                    }
+                    objectDate.title = `${e.Teams[0].NameTeam}: ${e.Teams[0].UserResult}  
+                    vs 
+                    ${e.Teams[1].NameTeam}: ${e.Teams[1].UserResult}`
                     objectDate.date = dateOfGame
+                    objectDate.color = color;
                     dateArray.push(objectDate);
                 });
-
                 // console.log(dateArray);
             }
         )();

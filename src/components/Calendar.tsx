@@ -25,12 +25,15 @@ export const MyMonthlyCalendar = (props: { dates: any }) => {
                 events={ props.dates }
                 renderDay={data =>
                     data.map((item, index) => (
-                        <DefaultMonthlyEventItem
-                            key={index}
-                            // @ts-ignore
-                            title={item.title}
-                            date={item.date.toDateString()}
-                        />
+                        // @ts-ignore
+                        <div className={`${item.color} has-text-primary-light`}>
+                            <DefaultMonthlyEventItem
+                                key={index}
+                                // @ts-ignore
+                                title={item.title}
+                                date={item.date.toDateString()}
+                            />
+                        </div>
                     ))
                 }
             />

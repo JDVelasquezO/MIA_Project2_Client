@@ -11,6 +11,8 @@ import Subscription from "./pages/User/Subscription";
 import Profile from "./pages/User/Profile";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import Events from "./pages/User/Events";
+import Prediction from "./pages/User/Prediction";
+import Event from "./pages/Event/Event";
 
 function App() {
   const [name, setName] = useState('');
@@ -56,6 +58,8 @@ function App() {
                 <Route exact path='/profile'
                        component={ () => <Profile first={first} last={last} username={name}
                                                   birth={birth} email={email} /> } />
+                <Route exact path='/prediction' component={Prediction} />
+                <Route path='/event/:id' component={Event} />
             </main>
           <Footer />
       </BrowserRouter>

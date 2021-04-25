@@ -20,16 +20,19 @@ export const MyWeeklyCalendar = (props: { dates: any }) => {
                         props.dates
                     }
                     renderItem={({ item, showingFullWeek }) => (
-                        <DefaultWeeklyEventItem
-                            key={item.date.toISOString()}
-                            // @ts-ignore
-                            title={item.title}
-                            date={
-                                showingFullWeek
-                                    ? format(item.date, 'MMM do k:mm')
-                                    : format(item.date, 'k:mm')
-                            }
-                        />
+                        // @ts-ignore
+                        <div className={`${item.color} has-text-primary-light`}>
+                            <DefaultWeeklyEventItem
+                                key={item.date.toISOString()}
+                                // @ts-ignore
+                                title={item.title}
+                                date={
+                                    showingFullWeek
+                                        ? format(item.date, 'MMM do k:mm')
+                                        : format(item.date, 'k:mm')
+                                }
+                            />
+                        </div>
                     )}
                 />
             </WeeklyContainer>

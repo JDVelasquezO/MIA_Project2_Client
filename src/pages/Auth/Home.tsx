@@ -30,11 +30,13 @@ const Home = (props: {name: string, role: number}) => {
         <div>
             { page }
             <Banner color={"container hero is-info"}
-                    title={"Participa en las quinielas"}
+                    title={"Ingresa tu predicción"}
                     subtitle={"y gana increíbles premios"} />
+            <br />
             <Banner color={"container hero is-danger"}
                     title={"Aqui va otro título"}
                     subtitle={"y otro subtítulo"} />
+            <br />
             <Banner color={"container hero is-primary"}
                     title={"Aquí va un titulo mas"}
                     subtitle={"y otro subtitulo"} />
