@@ -20,9 +20,9 @@ const Prediction = () => {
                     let dateOfGame = new Date(e.DateOfGame);
                     let color = e.ColorSport;
 
-                    objectDate.title = `${e.Teams[0].NameTeam}: ${e.Teams[0].UserResult}  
+                    objectDate.title = `${e.Teams[0].NameTeam}  
                     vs 
-                    ${e.Teams[1].NameTeam}: ${e.Teams[1].UserResult}`;
+                    ${e.Teams[1].NameTeam}`;
                     objectDate.date = dateOfGame;
                     objectDate.colorSport = chooseColor(color);
                     objectDate.id = e.IdEvent;

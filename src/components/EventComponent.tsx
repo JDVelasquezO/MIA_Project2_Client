@@ -14,7 +14,9 @@ const EventComponent = (props: {dataArray: Array<any>}) => {
                                 <div className="card-content">
                                     <div className="content">
                                         <Link to={'/event/'+data.id} >
+                                            <strong>
                                             { data.title }
+                                            </strong>
                                         </Link>
                                     </div>
                                 </div>
