@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from "react-router-dom";
+import FormEvent from "../../components/FormEvent";
 
 const Event = (props: { match: { params: { id: any; }; }; }) => {
     const { id } = props.match.params;
@@ -29,11 +30,11 @@ const Event = (props: { match: { params: { id: any; }; }; }) => {
                             </p>
                         )
                     } else {
-                        setUserRes(
+                        /*setUserRes(
                             <div className="notification is-danger">
                                 <strong>Aún no tienes ninguna predicción para este evento</strong>
                             </div>
-                        );
+                        );*/
                     }
                     setTeam1(content.Teams[0].NameTeam);
                     setTeam2(content.Teams[1].NameTeam);
@@ -46,29 +47,7 @@ const Event = (props: { match: { params: { id: any; }; }; }) => {
 
     const showAlert = () => {
         setFormPrediction(
-            <div className={'container'}>
-                <div className="notification is-danger">
-                    <strong>Aún no tienes ninguna predicción para este evento</strong>
-                </div>
-                <form>
-                    <div className="field columns">
-                        <div className={'column'}>
-                            <label className="label">Prediccion para { team1 }</label>
-                            <div className="control">
-                                <input className="input" type="text" placeholder="Text input" />
-                            </div>
-                        </div>
-
-                        <div className={'column'}>
-                            <label className="label">Prediccion para { team2 }</label>
-                            <div className="control">
-                                <input className="input" type="text" placeholder="Text input" />
-                            </div>
-                        </div>
-                    </div>
-                    <button className={'button is-primary'}>Predecir</button>
-                </form>
-            </div>
+            <FormEvent team1={team1} team2={team2} id_event={id} />
         )
     }
 

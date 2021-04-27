@@ -16,6 +16,7 @@ export const MyWeeklyCalendar = (props: { dates: any }) => {
             <WeeklyContainer>
                 <WeeklyDays />
                 <WeeklyBody
+                    style={{ color: "white" }}
                     events={
                         props.dates
                     }

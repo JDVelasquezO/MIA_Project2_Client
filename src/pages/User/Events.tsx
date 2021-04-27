@@ -32,6 +32,7 @@ const Events = (props: {name: string, role: number}) => {
                     } else {
                         color = 'has-background-grey'
                     }
+                    console.log(e.Teams[0]);
                     objectDate.title = `${e.Teams[0].NameTeam}: ${e.Teams[0].UserResult}  
                     vs 
                     ${e.Teams[1].NameTeam}: ${e.Teams[1].UserResult}`
@@ -39,7 +40,7 @@ const Events = (props: {name: string, role: number}) => {
                     objectDate.color = color;
                     dateArray.push(objectDate);
                 });
-                // console.log(dateArray);
+                //console.log(dateArray);
             }
         )();
     });
