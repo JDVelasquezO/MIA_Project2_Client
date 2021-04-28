@@ -37,10 +37,10 @@ const Prediction = () => {
         let newColor = "";
         switch (color) {
             case "Rojo":
-                newColor = "red";
+                newColor = "#c62828";
                 break;
             case "Azul":
-                newColor = "blue";
+                newColor = "#1565c0";
                 break;
         }
         return newColor;

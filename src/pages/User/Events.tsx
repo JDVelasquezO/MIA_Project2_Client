@@ -57,7 +57,7 @@ const Events = (props: {name: string, role: number}) => {
         );
     }
 
-    if (props.role == 3) {
+    if (props.role == 4) {
         page = 'Admin'
     } else {
         page = (

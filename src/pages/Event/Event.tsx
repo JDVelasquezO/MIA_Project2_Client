@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import { useParams } from "react-router-dom";
+import '../../styles/loader.css'
 import FormEvent from "../../components/FormEvent";
 
 const Event = (props: { match: { params: { id: any; }; }; }) => {
     const { id } = props.match.params;
     const [ title, setTitle ] = useState("");
-    const [ userRes, setUserRes ] = useState(<div />);
+    const [ userRes, setUserRes ] = useState(<div className="loader container mt-6 is-align-content-center" />);
     const [ team1, setTeam1 ] = useState("");
     const [ team2, setTeam2 ] = useState("");
     const [ formPrediction, setFormPrediction ] = useState(<div />);

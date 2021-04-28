@@ -24,7 +24,7 @@ const Subscription = (props: {name: string, role: number, idUser: number}) => {
         )();
     });
 
-    if (props.role == 3) {
+    if (props.role == 4) {
         page = 'Admin'
     } else {
         page = (
