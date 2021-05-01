@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../../styles/loader.css'
-import FormEvent from "../../components/FormEvent";
+import FormEvent from "../../components/Event/FormEvent";
 
 const Event = (props: { match: { params: { id: any; }; }; }) => {
     const { id } = props.match.params;

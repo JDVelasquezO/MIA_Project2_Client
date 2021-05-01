@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import PhotoProfile from "../../components/PhotoProfile";
-import FormProfile from "../../components/FormProfile";
-import ChangePhoto from "../../components/ChangePhoto";
+import PhotoProfile from "../../components/User/PhotoProfile";
+import FormProfile from "../../components/User/FormProfile";
+import ChangePhoto from "../../components/User/ChangePhoto";
 
 const Profile = (props: { first: string, last: string, username: string, birth: string,
     email: string, photo: string }) => {

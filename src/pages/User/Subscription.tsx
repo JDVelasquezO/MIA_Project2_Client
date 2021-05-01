@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
-import Membership from "../../components/Membership";
+import Membership from "../../components/User/Membership";
 
 const Subscription = (props: {name: string, role: number, idUser: number}) => {
     const [idMembership, setIdMembership] = useState(0);

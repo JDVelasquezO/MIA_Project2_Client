@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../../styles/loader.css'
-import EventComponent from "../../components/EventComponent";
+import EventComponent from "../../components/Event/EventComponent";
 
 const Prediction = () => {
     const [ events, setEvents ] = useState(<div className="loader container mt-6 is-align-content-center"/>);

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
-import {MyMonthlyCalendar} from "../../components/Calendar";
-import {MyWeeklyCalendar} from "../../components/WeeklyCalendar";
+import {MyMonthlyCalendar} from "../../components/Widgets/Calendar";
+import {MyWeeklyCalendar} from "../../components/Widgets/WeeklyCalendar";
 
 const Events = (props: {name: string, role: number}) => {
     const notification = (

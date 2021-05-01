@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom'
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/Widgets/Navbar";
+import Footer from "./components/Widgets/Footer";
 import Welcome from "./pages/Auth/Welcome";
 import Login from "./pages/Auth/Login";
 import Home from "./pages/Auth/Home";

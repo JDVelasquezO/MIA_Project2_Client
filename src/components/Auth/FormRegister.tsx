@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useState } from 'react';
-import FormSection from "./FormSection";
+import FormSection from "../Widgets/FormSection";
 import { Redirect } from 'react-router-dom';
 
 const FormRegister = () => {

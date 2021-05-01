@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import Banner from "../../components/Banner";
-import ActualSeason from "../../components/ActualSeason";
+import Banner from "../../components/User/Banner";
+import ActualSeason from "../../components/Admin/ActualSeason";
 
 const Home = (props: {name: string, role: number}) => {
     const [ name, setName ] = useState('');
