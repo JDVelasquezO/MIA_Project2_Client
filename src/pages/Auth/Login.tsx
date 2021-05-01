@@ -16,7 +16,8 @@ const Login = (props: {setName: (name: string) => void}) => {
             },
             credentials: 'include',
             body: JSON.stringify({
-                email, pass
+                "username": email,
+                pass
             })
         });
         const content = await res.json();
@@ -42,7 +43,7 @@ const Login = (props: {setName: (name: string) => void}) => {
                     <label className="label">Correo</label>
                     <div className="control">
                         <input onChange={e => setEmail(e.target.value)} autoFocus={true}
-                               className="input" type="email"
+                               className="input" type="text"
                                placeholder="e.g. alex@example.com" />
                     </div>
                 </div>

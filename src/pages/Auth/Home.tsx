@@ -1,9 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Banner from "../../components/Banner";
+import ActualSeason from "../../components/ActualSeason";
 
 const Home = (props: {name: string, role: number}) => {
+    const [ name, setName ] = useState('');
+    const [ capital, setCapital ] = useState(0);
+    const [ quantBronze, setQuantBronze ] = useState(0);
+    const [ quantSilver, setQuantSilver ] = useState(0);
+    const [ quantGold, setQuantGold ] = useState(0);
     let page;
+
+    useEffect(() => {
+        (
+            async () => {
+                const res = await fetch('http://localhost:8000/quinielas.io/getActualSeason', {
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include'
+                });
+
+                const content = await res.json();
+                // console.log(content);
+                setName(content.NameSeason);
+                setCapital(content.Capital)
+                setQuantBronze(content.QuantityBronze)
+                setQuantGold(content.QuantityGold)
+                setQuantSilver(content.QuantitySilver)
+            }
+        )();
+    })
 
     if (props.role == 4) {
         page = (
@@ -35,30 +60,8 @@ const Home = (props: {name: string, role: number}) => {
                 </div>
 
                 <div className={'container'}>
-                    <div className="card">
-                        <div className="card-content">
-                            <div className="content">
-                                <strong>2020-Q5</strong><br />
-                                <p>
-                                    En juego: Q.8030.00
-                                </p>
-                                <p>
-                                    Participantes:
-                                </p>
-                                <div className={'columns'} >
-                                    <div className="column mr-3 box has-background-warning">
-                                        <p>52</p>
-                                    </div>
-                                    <div className="column mr-3 box has-text-white has-background-dark">
-                                        <p>33</p>
-                                    </div>
-                                    <div className="column box has-text-white has-background-danger">
-                                        <p>12</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ActualSeason name={name} capital={capital} bronze={quantBronze}
+                     silver={quantSilver} gold={quantGold} />
                 </div>
             </div>
         )

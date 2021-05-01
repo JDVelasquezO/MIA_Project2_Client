@@ -3,11 +3,12 @@ import PhotoProfile from "../../components/PhotoProfile";
 import FormProfile from "../../components/FormProfile";
 import ChangePhoto from "../../components/ChangePhoto";
 
-const Profile = (props: { first: string, last: string, username: string, birth: string, email: string }) => {
+const Profile = (props: { first: string, last: string, username: string, birth: string,
+    email: string, photo: string }) => {
     return (
         <div className='columns mt-2'>
             <div className={'column'}>
-                <PhotoProfile />
+                <PhotoProfile photo={props.photo} />
             </div>
             <div className={'column'}>
                 <FormProfile birth={props.birth} email={props.email} first={props.first}

@@ -22,7 +22,8 @@ const ChangePhoto = () => {
                 if (typeof base64 === "string") {
                     aux = base64.split(",");
                 }
-                console.log(aux[1]);
+                setImage(aux[1]);
+                // console.log(aux[1]);
             }
         });
     }
@@ -34,7 +35,7 @@ const ChangePhoto = () => {
 
     const updateProfilePhoto = async (e: SyntheticEvent) => {
         e.preventDefault();
-        const res = await fetch('http://localhost:8000/quinielas.io/updatePhoto', {
+        /*const res = await fetch('http://localhost:8000/quinielas.io/updatePhoto', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,8 +45,8 @@ const ChangePhoto = () => {
                 image
             })
         });
-        const content = await res.json();
-        console.log(content);
+        const content = await res.json();*/
+        console.log(image);
     }
 
     const updatePassword = async (e: SyntheticEvent) => {
@@ -81,7 +82,7 @@ const ChangePhoto = () => {
                         <div className="file">
                             <label className="file-label">
                                 <input className="file-input" type="file" name="resume"
-                                onChange={ e => getPath(e.target.value) } />
+                                onChange={ e => convertToBase64(e.target.files) } />
                                 <span className="file-cta">
                                   <span className="file-label">
                                     Choose a file…

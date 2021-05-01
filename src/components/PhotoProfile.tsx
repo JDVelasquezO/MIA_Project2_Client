@@ -2,13 +2,13 @@ import React from 'react';
 
 const date = new Date();
 
-const PhotoProfile = () => {
+const PhotoProfile = (props: { photo: string } ) => {
     return (
         <div className="card mt-3 ml-4">
             <div className="card-image">
                 <figure className="image is-1by1">
                     <img className='is-rounded'
-                         src={'/images/yessi.jpg'}  alt={'profile-photo'}/>
+                         src={ props.photo }  alt={'profile-photo'}/>
                 </figure>
             </div>
             <div className="card-content">
