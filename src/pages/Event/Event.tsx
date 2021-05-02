@@ -19,48 +19,28 @@ const Event = (props: { match: { params: { id: any; }; }; }) => {
                 });
 
                 const content = await res.json();
-
-                if (content.Teams == null) {
-                    showAlert();
+                setTitle(`${content.Teams[0].NameTeam} vs ${content.Teams[1].NameTeam}`);
+                setTeam1(content.Teams[0].NameTeam);
+                setTeam2(content.Teams[1].NameTeam);
+                if (content.Teams[0].UserResult != -1 && content.Teams[1].UserResult != -1) {
+                    setUserRes(<p>
+                            {content.Teams[0].UserResult} - {content.Teams[1].UserResult}
+                        </p>
+                    )
                 } else {
-                    setTitle(`${content.Teams[0].NameTeam} vs ${content.Teams[1].NameTeam}`);
-                    if (content.Teams[0].UserResult != -1 && content.Teams[1].UserResult != -1) {
-                        setUserRes(<p>
-                                {content.Teams[0].UserResult} - {content.Teams[1].UserResult}
-                            </p>
-                        )
-                    } else {
-                        /*setUserRes(
-                            <div className="notification is-danger">
-                                <strong>Aún no tienes ninguna predicción para este evento</strong>
-                            </div>
-                        );*/
-                    }
-                    setTeam1(content.Teams[0].NameTeam);
-                    setTeam2(content.Teams[1].NameTeam);
-                    //console.log(content);
-                    verifyPrediction(content.Teams[0].UserResult, content.Teams[1].UserResult);
+                    showAlert();
                 }
             }
         )();
     });
 
     const showAlert = () => {
+        setUserRes(
+            <div />
+        )
         setFormPrediction(
             <FormEvent team1={team1} team2={team2} id_event={id} />
         )
-    }
-
-    const verifyPrediction = (resInt1: number, resInt2: number) => {
-        if (resInt2 == -1 && resInt1 == -1) {
-            showAlert();
-        } else {
-            setFormPrediction(
-                <div className="notification is-warning">
-                    <strong>Esperando resultados...</strong>
-                </div>
-            )
-        }
     }
 
     return (
