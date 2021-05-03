@@ -8,6 +8,10 @@ const Event = (props: { match: { params: { id: any; }; }; }) => {
     const [ userRes, setUserRes ] = useState(<div className="loader container mt-6 is-align-content-center" />);
     const [ team1, setTeam1 ] = useState("");
     const [ team2, setTeam2 ] = useState("");
+    const [ idTeam1, setIdTeam1 ] = useState(0);
+    const [ idTeam2, setIdTeam2 ] = useState(0);
+    const [ class1, setClass1 ] = useState(0);
+    const [ class2, setClass2 ] = useState(0);
     const [ formPrediction, setFormPrediction ] = useState(<div />);
 
     useEffect(() => {
@@ -22,6 +26,15 @@ const Event = (props: { match: { params: { id: any; }; }; }) => {
                 setTitle(`${content.Teams[0].NameTeam} vs ${content.Teams[1].NameTeam}`);
                 setTeam1(content.Teams[0].NameTeam);
                 setTeam2(content.Teams[1].NameTeam);
+                setIdTeam1(content.Teams[0].IdTeam);
+                setIdTeam2(content.Teams[1].IdTeam);
+                if (content.Teams[0].Classification == 'local') {
+                    setClass1(1);
+                    setClass2(2);
+                } else {
+                    setClass1(2);
+                    setClass2(1);
+                }
                 if (content.Teams[0].UserResult != -1 && content.Teams[1].UserResult != -1) {
                     setUserRes(<p>
                             {content.Teams[0].UserResult} - {content.Teams[1].UserResult}
@@ -39,7 +52,8 @@ const Event = (props: { match: { params: { id: any; }; }; }) => {
             <div />
         )
         setFormPrediction(
-            <FormEvent team1={team1} team2={team2} id_event={id} />
+            <FormEvent team1={team1} team2={team2} id_event={id} idTeam2={idTeam2}
+                       idTeam1={idTeam1} idClass1={class1} idClass2={class2} />
         )
     }
 

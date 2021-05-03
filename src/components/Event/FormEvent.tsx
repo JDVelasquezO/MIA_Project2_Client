@@ -1,6 +1,7 @@
 import React, {SyntheticEvent, useState} from 'react';
 
-const FormEvent = (props: { team1: string, team2: string, id_event: string }) => {
+const FormEvent = (props: { team1: string, team2: string, id_event: string, idTeam1: number,
+            idTeam2: number, idClass1: number, idClass2: number}) => {
     const [ userRes1, setUserRes1 ] = useState(0);
     const [ userRes2, setUserRes2 ] = useState(0);
 
@@ -9,7 +10,7 @@ const FormEvent = (props: { team1: string, team2: string, id_event: string }) =>
 
         console.log(props.id_event, userRes1, userRes2);
         const res = await fetch('http://localhost:8000/quinielas.io/postPrediction', {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -17,13 +18,18 @@ const FormEvent = (props: { team1: string, team2: string, id_event: string }) =>
             body: JSON.stringify({
                 "id_event": parseInt(props.id_event),
                 "userRes1": userRes1,
-                "userRes2": userRes2
+                "userRes2": userRes2,
+                "id_team1": props.idTeam1,
+                "id_team2": props.idTeam2,
+                "id_class1": props.idClass1,
+                "id_class2": props.idClass2
             })
         });
         const content = await res.json();
         // window.location.href = '/profile';
         setUserRes1(content.userRes1);
         setUserRes2(content.userRes2);
+        window.location.href = `/event/${props.id_event}`
     }
 
     return (
