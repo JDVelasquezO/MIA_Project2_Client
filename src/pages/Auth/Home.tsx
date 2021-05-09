@@ -85,17 +85,17 @@ const Home = (props: {name: string, role: number}) => {
                 <Banner color={"container hero is-info"}
                         title={"Ingresa tu predicción"}
                         subtitle={"y gana increíbles premios"}
-                        titleButton={"Predecir ahora"} />
+                        titleButton={"Predecir ahora"} redirect={"/prediction"} />
                 <br />
                 <Banner color={"container hero is-danger"}
                         title={"Resultados"}
                         subtitle={"Ven a ver en que posición estás actualmente"}
-                        titleButton={"Ver resultados"} />
+                        titleButton={"Ver resultados"} redirect={"/results"} />
                 <br />
                 <Banner color={"container hero is-primary"}
                         title={"Aquí va un titulo mas"}
                         subtitle={"y otro subtitulo"}
-                        titleButton={"Nada de nada"} />
+                        titleButton={"Nada de nada"} redirect={"/"} />
             </div>
         )
     }

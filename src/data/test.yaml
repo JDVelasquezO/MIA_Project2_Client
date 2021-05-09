@@ -1,0 +1,31 @@
+A2:
+  nombre: Jorge
+  apellido: Pook
+  password: Mvjtqy
+  username: jpook0@army.mil
+  resultados:
+    - temporada: 2018-Q3
+      tier: silver
+      jornadas:
+        - jornada: J1
+          predicciones:
+            - deporte: tennis
+              fecha: 01/03/2018 10:47
+              visitante: Ashien Hardman
+              local: Brandyn Tomasian
+              prediccion:
+                visitante: 3
+                local: 6
+              resultado:
+                visitante: 5
+                local: 3
+            - deporte: ping-pong
+              fecha: 06/03/2018 21:45
+              visitante: Carter Bolf
+              local: Dorice Munton
+              prediccion:
+                visitante: 0
+                local: 3
+              resultado:
+                visitante: 3
+                local: 2

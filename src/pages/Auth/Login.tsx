@@ -9,6 +9,7 @@ const Login = (props: {setName: (name: string) => void}) => {
 
     const submitHandler = async (e: SyntheticEvent) => {
         e.preventDefault();
+        console.log(email, pass);
         const res = await fetch('http://localhost:8000/quinielas.io/login', {
             method: 'POST',
             headers: {
@@ -17,7 +18,7 @@ const Login = (props: {setName: (name: string) => void}) => {
             credentials: 'include',
             body: JSON.stringify({
                 "username": email,
-                pass
+                "pass": pass
             })
         });
         const content = await res.json();
