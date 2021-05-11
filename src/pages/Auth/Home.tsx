@@ -88,14 +88,14 @@ const Home = (props: {name: string, role: number}) => {
                         titleButton={"Predecir ahora"} redirect={"/prediction"} />
                 <br />
                 <Banner color={"container hero is-danger"}
-                        title={"Resultados"}
+                        title={"Posiciones"}
                         subtitle={"Ven a ver en que posición estás actualmente"}
                         titleButton={"Ver resultados"} redirect={"/results"} />
                 <br />
                 <Banner color={"container hero is-primary"}
-                        title={"Aquí va un titulo mas"}
-                        subtitle={"y otro subtitulo"}
-                        titleButton={"Nada de nada"} redirect={"/"} />
+                        title={"Resultados"}
+                        subtitle={"Marcador real de cada partido"}
+                        titleButton={"Juegos de la temporada"} redirect={"/real_result"} />
             </div>
         )
     }

@@ -15,6 +15,7 @@ import Prediction from "./pages/User/Prediction";
 import Event from "./pages/Event/Event";
 import BulkLoad from "./pages/Admin/BulkLoad";
 import Results from "./pages/User/Results";
+import Workday from "./pages/Admin/Workday";
 
 function App() {
   const [name, setName] = useState('');
@@ -64,6 +65,7 @@ function App() {
                 <Route path='/event/:id' component={Event} />
                 <Route path='/bulkLoad' component={BulkLoad} />
                 <Route path='/results' component={Results} />
+                <Route path='/workingDays' component={Workday} />
             </main>
           <Footer />
       </BrowserRouter>

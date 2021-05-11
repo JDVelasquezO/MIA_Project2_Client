@@ -73,6 +73,7 @@ const Event = (props: { match: { params: { id: any; }; }; }) => {
                     <div>
                         { formPrediction }
                     </div>
+
                 </div>
             </div>
         </div>
