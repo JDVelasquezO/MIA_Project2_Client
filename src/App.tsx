@@ -16,6 +16,7 @@ import Event from "./pages/Event/Event";
 import BulkLoad from "./pages/Admin/BulkLoad";
 import Results from "./pages/User/Results";
 import Workday from "./pages/Admin/Workday";
+import Sport from "./pages/Admin/Sport";
 
 function App() {
   const [name, setName] = useState('');
@@ -66,6 +67,7 @@ function App() {
                 <Route path='/bulkLoad' component={BulkLoad} />
                 <Route path='/results' component={Results} />
                 <Route path='/workingDays' component={Workday} />
+                <Route path='/sports' component={Sport} />
             </main>
           <Footer />
       </BrowserRouter>

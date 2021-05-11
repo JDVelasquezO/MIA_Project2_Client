@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import {MyMonthlyCalendar} from "../../components/Widgets/Calendar";
 import {MyWeeklyCalendar} from "../../components/Widgets/WeeklyCalendar";
-import FormSport from "../../components/Admin/FormSport";
+import FormEvent from "../../components/Admin/FormEvent";
 
 const Workday = () => {
     const notification = (
@@ -88,7 +88,7 @@ const Workday = () => {
             </div>
 
             <div className={'container columns'}>
-                <div className={'column ml-6 card is-two-thirds'}>
+                <div className={'column card is-two-thirds'}>
                     <button onClick={changeMensual} className={'button is-info'}>Mensual</button>&nbsp;
                     <button onClick={changeSemanal} className={'button is-primary'}>Semanal</button>
                     <br /><br/>
@@ -98,7 +98,7 @@ const Workday = () => {
                 </div>&nbsp;
                 <div className={'column card is-one-third'}>
                     <h2 className={'title'}>Crear Evento</h2>
-                    <FormSport />
+                    <FormEvent />
                 </div>
             </div>
         </div>
