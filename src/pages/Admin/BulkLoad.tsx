@@ -1,16 +1,40 @@
 import React, {SyntheticEvent, useState} from 'react';
 import { Link } from 'react-router-dom';
-import {User} from "../../models/User";
-const data = require('../../data/test.yaml');
+const yaml = require('js-yaml');
+const user = require('../../models/User');
 
 const BulkLoad = () => {
-
-    const sendFile = (e: SyntheticEvent) => {
-        e.preventDefault()
-
-        const res = async () => {
-
+    const [ load, setLoad ] = useState({});
+    const chargeFile = (file: FileList | null) => {
+        const reader = new FileReader();
+        if (file) {
+            // console.log(file[0])
+            reader.readAsText(file[0]);
+            reader.onload = e => {
+                // @ts-ignore
+                const doc = yaml.load(e.target.result);
+                // setLoad(JSON.stringify(doc, null, 2));
+                setLoad(doc);
+            }
         }
+    }
+
+    const sendFile = async (e: SyntheticEvent) => {
+        e.preventDefault();
+        // @ts-ignore
+        // console.log(load);
+        const res = await fetch('http://localhost:8000/quinielas.io/uploadFile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                // @ts-ignore
+                "load": load
+            })
+        });
+        const content = await res.json();
+        console.log(content)
     }
 
     return (
@@ -42,10 +66,11 @@ const BulkLoad = () => {
             </div>
 
             <div>
-                <form className={'container'} >
+                <form onSubmit={sendFile} className={'container'} >
                     <div className="file">
                         <label className="file-label">
-                            <input className="file-input" type="file" name="resume" />
+                            <input onChange={ e => chargeFile(e.target.files) }
+                                   className="file-input" type="file" name="resume" />
                             <span className="file-cta">
                               <span className="file-icon">
                                 <i className="fas fa-upload" />
