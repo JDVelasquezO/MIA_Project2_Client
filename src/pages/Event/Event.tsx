@@ -2,58 +2,58 @@ import React, {useEffect, useState} from 'react';
 import '../../styles/loader.css'
 import FormEvent from "../../components/Event/FormEvent";
 
-const Event = (props: { match: { params: { id: any; }; }; }) => {
+const Event = (props: { match: { params: { id: any; } } }) => {
     const { id } = props.match.params;
     const [ title, setTitle ] = useState("");
     const [ userRes, setUserRes ] = useState(<div className="loader container mt-6 is-align-content-center" />);
     const [ team1, setTeam1 ] = useState("");
     const [ team2, setTeam2 ] = useState("");
-    const [ idTeam1, setIdTeam1 ] = useState(0);
-    const [ idTeam2, setIdTeam2 ] = useState(0);
     const [ class1, setClass1 ] = useState(0);
     const [ class2, setClass2 ] = useState(0);
+    const [ nameClass1, setNameClass1 ] = useState('');
+    const [ nameClass2, setNameClass2 ] = useState('');
     const [ formPrediction, setFormPrediction ] = useState(<div />);
+    const url = `http://localhost:8000/quinielas.io/getEvent/${id}`
 
     useEffect(() => {
         (
             async () => {
-                const res = await fetch(`http://localhost:8000/quinielas.io/getEvent/${id}`, {
+                const res = await fetch(url, {
                     headers: {'Content-Type': 'application/json'},
                     credentials: 'include'
                 });
 
                 const content = await res.json();
-                setTitle(`${content.Teams[0].NameTeam} vs ${content.Teams[1].NameTeam}`);
+                console.log(content);
                 setTeam1(content.Teams[0].NameTeam);
                 setTeam2(content.Teams[1].NameTeam);
-                setIdTeam1(content.Teams[0].IdTeam);
-                setIdTeam2(content.Teams[1].IdTeam);
-                if (content.Teams[0].Classification == 'local') {
-                    setClass1(1);
-                    setClass2(2);
-                } else {
-                    setClass1(2);
-                    setClass2(1);
-                }
+                setClass1(content.Teams[0].IdClass);
+                setClass2(content.Teams[1].IdClass);
+                setNameClass1(content.Teams[0].Classification);
+                setNameClass2(content.Teams[1].Classification);
+                setTitle(`${content.Teams[0].NameTeam} vs ${content.Teams[1].NameTeam}`);
+                //console.log(team1, team2, class1, class2, nameClass2, nameClass1)
                 if (content.Teams[0].UserResult != -1 && content.Teams[1].UserResult != -1) {
                     setUserRes(<p>
                             {content.Teams[0].UserResult} - {content.Teams[1].UserResult}
                         </p>
                     )
                 } else {
-                    showAlert();
+                    showAlert(content.Teams[0].NameTeam, content.Teams[1].NameTeam, content.Teams[0].Classification,
+                        content.Teams[1].Classification, content.Teams[0].IdClass, content.Teams[1].IdClass);
                 }
             }
         )();
-    });
+    }, [url]);
 
-    const showAlert = () => {
+    const showAlert = (team1: string, team2: string, nameClass1: string, nameClass2: string,
+                       class1: number, class2: number) => {
         setUserRes(
-            <div />
+            <div/>
         )
         setFormPrediction(
-            <FormEvent team1={team1} team2={team2} id_event={id} idTeam2={idTeam2}
-                       idTeam1={idTeam1} idClass1={class1} idClass2={class2} />
+            <FormEvent team1={team1} team2={team2} id_event={id} className1={nameClass1} className2={nameClass2}
+                       idClass1={class1} idClass2={class2} />
         )
     }
 

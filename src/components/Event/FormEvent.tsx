@@ -1,14 +1,16 @@
 import React, {SyntheticEvent, useState} from 'react';
 
-const FormEvent = (props: { team1: string, team2: string, id_event: string, idTeam1: number,
-            idTeam2: number, idClass1: number, idClass2: number}) => {
+const FormEvent = (props: { team1: string, team2: string, id_event: string, idClass1: number,
+    idClass2: number, className1: string, className2: string }) => {
     const [ userRes1, setUserRes1 ] = useState(0);
     const [ userRes2, setUserRes2 ] = useState(0);
+
+    console.log(props.team2, props.team1, props.id_event, props.idClass2, props.idClass1)
 
     const postPrediction = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        console.log(props.id_event, userRes1, userRes2);
+        // console.log(props.id_event, userRes1, userRes2);
         const res = await fetch('http://localhost:8000/quinielas.io/postPrediction', {
             method: 'POST',
             headers: {
@@ -19,8 +21,6 @@ const FormEvent = (props: { team1: string, team2: string, id_event: string, idTe
                 "id_event": parseInt(props.id_event),
                 "userRes1": userRes1,
                 "userRes2": userRes2,
-                "id_team1": props.idTeam1,
-                "id_team2": props.idTeam2,
                 "id_class1": props.idClass1,
                 "id_class2": props.idClass2
             })
@@ -40,7 +40,8 @@ const FormEvent = (props: { team1: string, team2: string, id_event: string, idTe
             <form onSubmit={postPrediction} >
                 <div className="field columns">
                     <div className={'column'}>
-                        <label className="label">Prediccion para { props.team1 }</label>
+                        <label className="label">Prediccion para { props.team1 } ({ props.className1 })
+                        </label>
                         <div className="control">
                             <input className="input" type="text" placeholder="Text input"
                             onChange={e => setUserRes1(parseInt(e.target.value))} />
@@ -48,7 +49,8 @@ const FormEvent = (props: { team1: string, team2: string, id_event: string, idTe
                     </div>
 
                     <div className={'column'}>
-                        <label className="label">Prediccion para { props.team2 }</label>
+                        <label className="label">Prediccion para { props.team2 } ({ props.className2 })
+                        </label>
                         <div className="control">
                             <input className="input" type="text" placeholder="Text input"
                                    onChange={e => setUserRes2(parseInt(e.target.value))} />
