@@ -14,9 +14,10 @@ import Events from "./pages/User/Events";
 import Prediction from "./pages/User/Prediction";
 import Event from "./pages/Event/Event";
 import BulkLoad from "./pages/Admin/BulkLoad";
-import Results from "./pages/User/Results";
+import DefineResults from "./pages/User/DefineResults";
 import Workday from "./pages/Admin/Workday";
 import Sport from "./pages/Admin/Sport";
+import Results from "./pages/Admin/Results";
 
 function App() {
   const [name, setName] = useState('');
@@ -65,9 +66,9 @@ function App() {
                 <Route exact path='/prediction' component={Prediction} />
                 <Route path='/event/:id' component={Event} />
                 <Route path='/bulkLoad' component={BulkLoad} />
-                <Route path='/results' component={Results} />
                 <Route path='/workingDays' component={Workday} />
                 <Route path='/sports' component={Sport} />
+                <Route path='/defineResults' component={Results} />
             </main>
           <Footer />
       </BrowserRouter>

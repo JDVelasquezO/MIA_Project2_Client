@@ -87,6 +87,7 @@ const Workday = () => {
                 </ul>
             </div>
 
+            <Link to='/defineResults' className={'button is-primary'}>Asignar Resultados</Link><br/><br/>
             <div className={'container columns'}>
                 <div className={'column card is-two-thirds'}>
                     <button onClick={changeMensual} className={'button is-info'}>Mensual</button>&nbsp;

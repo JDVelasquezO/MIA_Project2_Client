@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import TableResults from "../../components/User/TableResults";
 
-const Results = () => {
+const DefineResults = () => {
     const [ data, setData ] = useState([]);
     const url = "http://localhost:8000/quinielas.io/getPositionsP10";
 
@@ -31,4 +31,4 @@ const Results = () => {
     );
 };
 
-export default Results;
+export default DefineResults;
