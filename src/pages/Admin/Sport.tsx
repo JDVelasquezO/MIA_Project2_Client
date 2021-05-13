@@ -49,20 +49,14 @@ const Sport = () => {
                     </li>
                 </ul>
             </div>
+            <h1 className={'title'}>Administración de Deportes</h1>
             <div className={'columns'}>
-                <div className={'column'}>
+                <div className={'column is-two-thirds'}>
                     <SportTable />
                 </div>
                 <div className={'column'}>
                     <FormSport colors={colors} /><br />
-                    <div className={'columns'}>
-                        <div className={'column'} >
-                            <FormColor />
-                        </div>
-                        <div className={'column'} >
-                            <FormTeam />
-                        </div>
-                    </div>
+                    <FormColor />
                 </div>
             </div>
         </div>

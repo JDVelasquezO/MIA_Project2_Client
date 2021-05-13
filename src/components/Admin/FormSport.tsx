@@ -10,17 +10,20 @@ const FormSport = (props: { colors: Array<any> }) => {
 
     const registerSport = async (e: SyntheticEvent) => {
         e.preventDefault();
-        await fetch('http://localhost:8000/quinielas.io/postSports', {
+        console.log(idColor, nameSport)
+        const res = await fetch('http://localhost:8000/quinielas.io/postSports', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                nameSport,
+                "nameSport": nameSport,
                 "fkIdColor": idColor.toString()
             })
         });
 
+        /*const content = await res.json()
+        console.log(content)*/
         window.location.href = '/sports'
     }
 
