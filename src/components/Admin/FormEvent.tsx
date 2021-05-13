@@ -6,9 +6,6 @@ const FormEvent = () => {
     const [ idSport, setIdSport ] = useState(0);
     const [ nameSport, setNameSport ] = useState('');
     const [ data, setData ] = useState([]);
-    const [ teams, setTeams ] = useState([]);
-    const [ idTeamV, setIdTeamV ] = useState(0);
-    const [ idTeamL, setIdTeamL ] = useState(0);
     const [ nameTeamV, setNameTeamV ] = useState('');
     const [ nameTeamL, setNameTeamL ] = useState('');
     const [ date, setDate ] = useState('');
@@ -48,36 +45,17 @@ const FormEvent = () => {
     }
 
     const changeTeamV = (e:string) => {
-        setIdTeamV(parseInt(e.split(' ')[0]));
-        setNameTeamV(e.split(' ')[2]);
+        setNameTeamV(e);
         // console.log(idTeam, nameTeam);
     }
 
     const changeTeamL = async (e: string) => {
-        setIdTeamL(parseInt(e.split(' ')[0]));
-        setNameTeamL(e.split(' ')[2]);
+        setNameTeamL(e);
     }
 
     const changeWD = async (e: string) => {
         setIdWd(parseInt(e.split(' ')[0]));
         setNameWd(e.split(' ')[2]);
-    }
-
-    const showTeams = async (e: SyntheticEvent) => {
-        e.preventDefault();
-        const res = await fetch('http://localhost:8000/quinielas.io/getTeamsById', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "idSport": idSport
-            })
-        });
-
-        const content = await res.json();
-        console.log(content);
-        setTeams(content);
     }
 
     const sendTeam = async (e: SyntheticEvent) => {
@@ -92,10 +70,11 @@ const FormEvent = () => {
                 "dateEvent": newDate,
                 "idWd": idWd.toString(),
                 "idStatus": "1",
-                "idTeam1": idTeamV.toString(),
-                "idTeam2": idTeamL.toString(),
                 "idClass1": "1",
-                "idClass2": "2"
+                "idClass2": "2",
+                "player1": nameTeamV,
+                "player2": nameTeamL,
+                "idSport": idSport.toString()
             })
         });
         const content = await res.json();
@@ -105,7 +84,7 @@ const FormEvent = () => {
 
     return (
         <div>
-            <form onSubmit={showTeams}>
+            <form onSubmit={sendTeam}>
                 <div className="field">
                     <label>Escoger Deporte</label><br />
                     <div className="select">
@@ -121,44 +100,19 @@ const FormEvent = () => {
                             }
                         </select>
                     </div>
-                    <button className={'button is-primary'}>
-                        Buscar equipos
-                    </button>
                 </div>
-            </form><br />
-            <form onSubmit={sendTeam}>
                 <div className="field">
                     <label>Escoger Equipo Visitante</label><br />
-                    <div className="select">
-                        <select onChange={e => changeTeamV(e.target.value)}>
-                            <option>- Equipo -</option>
-                            {
-                                teams.map(team => {
-                                    return (
-                                        // @ts-ignore
-                                        <option>{ team.IdTeam } - { team.NameTeam }</option>
-                                    )
-                                })
-                            }
-                        </select>
+                    <div className="control">
+                        <input onChange={e => changeTeamV(e.target.value)}
+                               className="input" type="text" placeholder="Visitante" />
                     </div>
                 </div>
 
                 <div className="field">
                     <label>Escoger Equipo Local</label><br />
-                    <div className="select">
-                        <select onChange={e => changeTeamL(e.target.value)}>
-                            <option>- Equipo -</option>
-                            {
-                                teams.map(team => {
-                                    return (
-                                        // @ts-ignore
-                                        <option>{ team.IdTeam } - { team.NameTeam }</option>
-                                    )
-                                })
-                            }
-                        </select>
-                    </div>
+                    <input onChange={e => changeTeamL(e.target.value)}
+                           className="input" type="text" placeholder="Local" />
                 </div>
 
                 <div className="field">
@@ -188,7 +142,7 @@ const FormEvent = () => {
                     <label className={'label'} htmlFor="appt">Hora de inicio:</label>
                     <div className={'control'}>
                         <input onChange={ e => setTime(e.target.value) }
-                               className={'input'} type="time" min="07:00" max="20:00" step="2" />
+                               className={'input'} type="time" min="07:00" max="20:00" />
                     </div>
                     <br />
                     <button className={'button is-primary'}>
