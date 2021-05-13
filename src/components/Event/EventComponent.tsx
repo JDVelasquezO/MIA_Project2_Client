@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const EventComponent = (props: {dataArray: Array<any>}) => {
-
+    console.log(props.dataArray)
     return (
         <div className={'container'} >
             {
@@ -27,6 +27,6 @@ const EventComponent = (props: {dataArray: Array<any>}) => {
             }
         </div>
     );
-};
+}
 
 export default EventComponent;

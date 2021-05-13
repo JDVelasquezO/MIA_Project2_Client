@@ -18,6 +18,8 @@ import DefineResults from "./pages/User/DefineResults";
 import Workday from "./pages/Admin/Workday";
 import Sport from "./pages/Admin/Sport";
 import Results from "./pages/Admin/Results";
+import Season from "./pages/Admin/Season";
+import SeasonUser from "./pages/Admin/SeasonUser";
 
 function App() {
   const [name, setName] = useState('');
@@ -69,6 +71,8 @@ function App() {
                 <Route path='/workingDays' component={Workday} />
                 <Route path='/sports' component={Sport} />
                 <Route path='/defineResults' component={Results} />
+                <Route path='/season' component={Season} />
+                <Route path='/seasonUser/:id' component={SeasonUser} />
             </main>
           <Footer />
       </BrowserRouter>

@@ -5,11 +5,12 @@ import EventComponent from "../../components/Event/EventComponent";
 const Prediction = () => {
     const [ events, setEvents ] = useState(<div className="loader container mt-6 is-align-content-center"/>);
     const dataArray: any = [];
+    const url = 'http://localhost:8000/quinielas.io/getEvents';
 
     useEffect(() => {
         (
             async () => {
-                const res = await fetch('http://localhost:8000/quinielas.io/getEvents', {
+                const res = await fetch(url, {
                     headers: {'Content-Type': 'application/json'},
                     credentials: 'include'
                 });
@@ -24,27 +25,14 @@ const Prediction = () => {
                     vs 
                     ${e.Teams[1].NameTeam}`;
                     objectDate.date = dateOfGame;
-                    objectDate.colorSport = chooseColor(color);
+                    objectDate.colorSport = color;
                     objectDate.id = e.IdEvent;
                     dataArray.push(objectDate);
                 });
                 showEvents();
             }
         )();
-    });
-
-    const chooseColor = (color: string) => {
-        let newColor = "";
-        switch (color) {
-            case "Rojo":
-                newColor = "#c62828";
-                break;
-            case "Azul":
-                newColor = "#1565c0";
-                break;
-        }
-        return newColor;
-    }
+    }, [url]);
 
     const showEvents = () => {
         setEvents(<EventComponent dataArray={dataArray} />);
