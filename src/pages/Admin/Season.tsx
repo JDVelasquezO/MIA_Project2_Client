@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
+import FormSeason from "../../components/User/FormSeason";
+import FormWorkingdays from "../../components/User/FormWorkingdays";
 
 const Season = () => {
     const url = 'http://localhost:8000/quinielas.io/getParticipants';
@@ -47,30 +49,37 @@ const Season = () => {
                     </li>
                 </ul>
             </div>
-            <div>
-                <h1 className={'title'}>Temporadas</h1>
-                <p>Participantes actuales:</p>
-                <div className={'container'}>
-                    {
-                        data.map(d => {
-                            // @ts-ignore
-                            let id = d.Id
-                            // @ts-ignore
-                            let name = d.Username
-                            // @ts-ignore
-                            let IdMembership = d.IdMembership
-                            return (
-                                <div className={'card m-2 p-3'}>
-                                    <p className={'title'}>{ id } - { name } - { IdMembership }</p>
-                                    <Link className={'button is-primary'} to={'/seasonUser/'+IdMembership} >
-                                        <strong>
-                                            Ver detalles
-                                        </strong>
-                                    </Link>
-                                </div>
-                            )
-                        })
-                    }
+            <div className={'columns'}>
+                <div className={'column'}>
+                    <div className={'card container'}>
+                        <h1 className={'title'}>Temporadas</h1>
+                        <p>Participantes actuales:</p>
+                        {
+                            data.map(d => {
+                                // @ts-ignore
+                                let id = d.Id
+                                // @ts-ignore
+                                let name = d.Username
+                                // @ts-ignore
+                                let IdMembership = d.IdMembership
+                                return (
+                                    <div className={'card m-2 p-3'}>
+                                        <p className={'title'}>{ IdMembership } - { name } </p>
+                                        <Link className={'button is-primary'} to={'/seasonUser/'+IdMembership} >
+                                            <strong>
+                                                Ver detalles
+                                            </strong>
+                                        </Link>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+                <div className={'column'}>
+                    <FormSeason />
+                    <br />
+                    <FormWorkingdays />
                 </div>
             </div>
         </div>
